@@ -11,7 +11,7 @@ import java.io.Writer;
 
 //  Interfaz base ára algoritmos de Patter matching
 
-public interface PatternMatchingAlgorithm {
+public interface IPatternMatchingAlgorithm {
 
     public void buildAlgorithm(Reader text);
 
