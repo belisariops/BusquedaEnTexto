@@ -2,9 +2,6 @@ package algorithms;
 
 import com.sun.org.apache.xpath.internal.operations.String;
 
-import java.io.Reader;
-import java.io.Writer;
-
 /**
  * Created by americo on 04-06-17.
  */
@@ -13,9 +10,9 @@ import java.io.Writer;
 
 public interface IPatternMatchingAlgorithm {
 
-    public void buildAlgorithm(Reader text);
+    public void buildAlgorithm(String text);
 
-    public void searchWord(String word, Writer result);
+    public void searchWord(String word, String result);
 
 
 }
