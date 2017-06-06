@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 
-public class textCleaner {
+public class TextCleaner {
 
     private String nameResult;
     private String randomResult;
@@ -14,7 +14,7 @@ public class textCleaner {
 
     private int count = 0;
 
-    public textCleaner(String textname) {
+    public TextCleaner(String textname) {
         FileReader aFile;
         try {
             String[] local = textname.split("\\.");
