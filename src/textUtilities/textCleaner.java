@@ -49,7 +49,7 @@ public class textCleaner {
             cleanedLine = line.toLowerCase();
 
             String original = "àáâãäåæçèéêëìíîïðñòóôõöøùúûüýÿ";
-            String originalEl = "!\"#$%&'()*+,-\\./0123456789:;<=>?@[\\]^_`{|}~¡¢£¤¥¦§¨©ª«¬®¯°±²³´µ¶·¸¹º»¼½¾¿÷øƒ–—‘’‚“”„†‡•…‰€™ß„";
+            String originalEl = "!\"#$%&'()*+,-\\./0123456789:;<=>?@[\\]^_`{|}~¡¢£¤¥¦§¨©ª«¬®¯°±²³´µ¶·¸¹º»¼½¾¿÷øƒ–—‘’‚“”„†‡•…‰€™ß„�";
             // Cadena de caracteres ASCII que reemplazarán los originales.
             String ascii = "aaaaaaaceeeeiiiionoooooouuuuyy";
             String output = cleanedLine;
@@ -82,11 +82,13 @@ public class textCleaner {
             result.write(cleanedLine);
 
             randomAux.add(this.getRandomWord(wordsAux));
+            wordsAux = new ArrayList<>();
 
             j++;
             if(j == 10){
 
                 randomWord.add(this.getRandomWord(randomAux));
+                randomAux = new ArrayList<>();
                 j = 0;
             }
             if(randomWord.size()>32){
@@ -113,6 +115,9 @@ public class textCleaner {
 
     private String getRandomWord(ArrayList<String> words){
         Random rand = new Random();
+        if(words.size() == 0){
+            return "";
+        }
         int whose = rand.nextInt(words.size());
 
         return words.get(whose);
@@ -140,17 +145,12 @@ public class textCleaner {
                     FileReader auxFile = new FileReader(randomResult);
                     BufferedReader reader = new BufferedReader(auxFile);
                     String line;
-                    int k = 0;
                     while ((line = reader.readLine()) != null) {
-                        if (k == whose) {
-                            ArrayList<String> val = new ArrayList<>();
-                            for (String pal : line.split(":")) {
-                                val.add(pal);
-                            }
-                            return this.getRandomWord(val);
-                        } else {
-                            k++;
+                        ArrayList<String> val = new ArrayList<>();
+                        for (String pal : line.split(";")) {
+                            val.add(pal);
                         }
+                        return this.getRandomWord(val);
                     }
                 }
                 catch(IOException e){
