@@ -1,6 +1,7 @@
 package com.company;
 
 import Automata.Automata;
+import SuffixArray.SuffixArray;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -25,7 +26,7 @@ public class Main {
                 System.out.println(a[i][j]);
             }
 
-        String t = "banana";
+        String t = "banananana";
         String p = "ana";
         BufferedReader br = new BufferedReader(new StringReader(t));
         Automata automata = new Automata(p);
@@ -41,6 +42,8 @@ public class Main {
         for (Integer i: list) {
             System.out.println(i);
         }
+        StringBuilder s = new StringBuilder("bananananananananana");
+        SuffixArray array = new SuffixArray(s);
 
 
     }
