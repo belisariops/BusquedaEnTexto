@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by belisariops on 6/4/17.
  */
-public class Automata {
+public class Automata{
     private int[][] matrix;
     private int numStates;
     private int cantRepeticiones;
@@ -47,7 +47,6 @@ public class Automata {
         for (int k=0; k<26;k++) {
             matrix[k][numStates] = matrix[k][x];
         }
-
     }
 
     public List<Integer> run(BufferedReader buffer) throws IOException {
@@ -58,7 +57,7 @@ public class Automata {
         int currentState=0;
         cantRepeticiones=0;
         char c;
-        ArrayList<Integer> match = new ArrayList<Integer>();
+        ArrayList<Integer> match = new ArrayList<>();
         while ( (line= buffer.readLine())!= null) {
             for (i=0;i<line.length();i++) {
                 c = line.charAt(i);
