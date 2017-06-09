@@ -18,7 +18,7 @@ public class Main {
         Automata automata;
         List<Integer> list;
 
-        TextCleaner cleaner = new TextCleaner("english200MB.txt");
+        TextCleaner cleaner = new TextCleaner("english.txt");
         try {
             textPath = cleaner.clean();
 
@@ -26,16 +26,18 @@ public class Main {
                 words.add(cleaner.getRandom());
             }
 
-            BufferedReader br = new BufferedReader(new FileReader(textPath));
+            BufferedReader br;
 
             for(String word : words){
+                br = new BufferedReader(new FileReader(textPath));
                 automata = new Automata(word);
                 list = automata.run(br);
                 System.out.println("Repeticiones: "+automata.getCantRepeticiones());
-                System.out.println("Posiciones :");
+                //System.out.println("Posiciones :");
                 for (Integer i: list) {
-                    System.out.println(i);
+                    //System.out.println(i);
                 }
+                br.close();
             }
         } catch(IOException e){
             System.out.println("Error E/S: " + e);

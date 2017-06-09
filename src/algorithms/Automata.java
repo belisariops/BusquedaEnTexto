@@ -61,7 +61,11 @@ public class Automata{
         while ( (line= buffer.readLine())!= null) {
             for (i=0;i<line.length();i++) {
                 c = line.charAt(i);
-                currentState = this.matrix[((int)c)-97][currentState];
+                try{
+                    currentState = this.matrix[((int)c)-97][currentState];
+                }catch (java.lang.ArrayIndexOutOfBoundsException e){
+                    System.out.print(c);
+                }
                 if (currentState == numStates) {
                     cantRepeticiones++;
                     match.add(index-numStates+1);

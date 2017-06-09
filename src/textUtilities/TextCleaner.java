@@ -49,9 +49,11 @@ public class TextCleaner {
             cleanedLine = line.toLowerCase();
 
             String original = "àáâãäåæçèéêëìíîïðñòóôõöøùúûüýÿ";
-            String originalEl = "!\"#$%&'()*+,-\\./0123456789:;<=>?@[\\]^_`{|}~¡¢£¤¥¦§¨©ª«¬®¯°±²³´µ¶·¸¹º»¼½¾¿÷øƒ–—‘’‚“”„†‡•…‰€™ß„�";
+            String originalEl = "!\"#$%&'()*+,-\\./0123456789:;<=>?@[\\]^_`{|}~\u007F\t\u0015œ\u001E\u001F\u001D\f\u0019\u0014\u001D\u001C\u001D\u000E\u0007\u001B\u0016";
             // Cadena de caracteres ASCII que reemplazarán los originales.
             String ascii = "aaaaaaaceeeeiiiionoooooouuuuyy";
+
+            cleanedLine = cleanedLine.replaceAll("[^\\x00-\\x7F]", "");
             String output = cleanedLine;
             for (int i=0; i<original.length(); i++) {
                 // Reemplazamos los caracteres especiales.
@@ -79,7 +81,7 @@ public class TextCleaner {
 
             cleanedLine = cleanedLine.replaceAll(" ", "");
 
-            result.write(cleanedLine);
+            result.write(cleanedLine+System.lineSeparator());
 
             randomAux.add(this.getRandomWord(wordsAux));
             wordsAux = new ArrayList<>();
