@@ -310,4 +310,35 @@ public class SuffixArray {
      private boolean lexTriples(int a1,int a2,int a3, int b1, int b2,int b3) {
          return (a1<b1 || a1==b1 && lexPairs(a2,a3,b2,b3));
      }
+
+
+
+     public boolean findPattern(String pattern) {
+//         if (this.array == null)
+//             return false;
+//        char[] charArray = pattern.toCharArray();
+//        int pos = 0;
+//        int n = pattern.length()/2;
+//        int x = n+pos;
+//        for (int i = 0; i<pattern.length();i++) {
+//            if (charArray[i] == this.s.charAt(this.array[n+pos]))
+//                break;
+//            else if (charArray[i] < this.s.charAt(this.array[n+pos]))
+//                n = n
+//        }
+         int j=0,L=1,R=this.array.length;
+         int M = R;
+         while (L/R !=1) {
+             M = (L+R)/2 + ((L+R)%2 == 0 ? 0 : 1);
+             int compare = pattern.compareTo(s.substring(this.array[M]));
+             if (compare > 0)
+                 L = M;
+             else if (compare < 0)
+                 R = M;
+             else
+                 return true;
+
+         }
+         return false;
+     }
 }

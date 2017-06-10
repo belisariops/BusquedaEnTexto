@@ -44,6 +44,7 @@ public class Main {
         }
         StringBuilder s = new StringBuilder("bananananananananana");
         SuffixArray array = new SuffixArray(s);
+        System.out.println(array.findPattern("ana"));
 
 
     }
