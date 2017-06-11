@@ -27,10 +27,12 @@ public class SuffixArray {
             text[i] = this.toInt(s.charAt(i));
 
         array = this.constructArray(text,n,26);
+//
+//        for (int j=0;j<array.length;j++)
+//            System.out.println(s.subSequence(array[j],s.length()));
 
-        for (int j=0;j<array.length;j++)
-            System.out.println(s.subSequence(array[j],s.length()));
 
+        this.s = new StringBuilder(s.substring(0,s.length()-3));
 
 //        for (long i=1;i<s.length();i++) {
 //            if (i%3==1)
@@ -329,7 +331,7 @@ public class SuffixArray {
          int j=0,L=1,R=this.array.length;
          int M = R;
          while (L/R !=1) {
-             M = (L+R)/2 + ((L+R)%2 == 0 ? 0 : 1);
+             M = (L+R)/2; //+ ((L+R)%2 == 0 ? 0 : 1);
              int compare = pattern.compareTo(s.substring(this.array[M]));
              if (compare > 0)
                  L = M;
