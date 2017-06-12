@@ -1,0 +1,18 @@
+\BOOKMARK [1][-]{section.1}{Introducci\363n}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Problema a resolver}{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.2}{Hip\363tesis}{section.1}% 3
+\BOOKMARK [1][-]{section.2}{Dise\361o Te\363rico}{}% 4
+\BOOKMARK [2][-]{subsection.2.1}{Main}{section.2}% 5
+\BOOKMARK [2][-]{subsection.2.2}{Ukkonen}{section.2}% 6
+\BOOKMARK [2][-]{subsection.2.3}{Last}{section.2}% 7
+\BOOKMARK [2][-]{subsection.2.4}{Node}{section.2}% 8
+\BOOKMARK [2][-]{subsection.2.5}{InternalNode}{section.2}% 9
+\BOOKMARK [2][-]{subsection.2.6}{TextPreprocessor}{section.2}% 10
+\BOOKMARK [2][-]{subsection.2.7}{Logger}{section.2}% 11
+\BOOKMARK [1][-]{section.3}{Presentaci\363n de los Resultados}{}% 12
+\BOOKMARK [2][-]{subsection.3.1}{Tiempo de Creaci\363n del Suffix Tree}{section.3}% 13
+\BOOKMARK [2][-]{subsection.3.2}{Desempe\361o de operaci\363n Buscar}{section.3}% 14
+\BOOKMARK [1][-]{section.4}{An\341lisis y Conclusiones}{}% 15
+\BOOKMARK [2][-]{subsection.4.1}{Construcci\363n del Suffix Tree}{section.4}% 16
+\BOOKMARK [2][-]{subsection.4.2}{B\372squeda en el Suffix Tree}{section.4}% 17
+\BOOKMARK [2][-]{subsection.4.3}{Conclusiones}{section.4}% 18
