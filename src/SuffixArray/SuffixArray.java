@@ -27,49 +27,7 @@ public class SuffixArray {
             text[i] = this.toInt(s.charAt(i));
 
         array = this.constructArray(text,n,26);
-//
-//        for (int j=0;j<array.length;j++)
-//            System.out.println(s.subSequence(array[j],s.length()));
-
-
         this.s = new StringBuilder(s.substring(0,s.length()-3));
-
-//        for (long i=1;i<s.length();i++) {
-//            if (i%3==1)
-//                a.add(new Tripla(i,i,true));
-//            else if (i%3 ==2)
-//                b.add(new Tripla(i,i,false));
-//            else
-//                c.add(new Tripla(i,i,false));
-//        }
-
-//        /*PCA Rulz*/
-//        int i;
-//        for (i=1;i<s.length() - 2;i+=3) {
-//                a.add(new Tripla(i,i,true));
-//                b.add(new Tripla(i+1,i+1,false));
-//                c.add(new Tripla(i+2,i+2,false));
-//        }
-//
-////        if (i == s.length() - 1)
-////            a.add(new Tripla(i,i,true,""+s.charAt(i)));
-////        else if (i == s.length() - 2) {
-////            a.add(new Tripla(i,i,true,(String)s.subSequence(i,i+3)));
-////            b.add(new Tripla(i+1,i+1,false,""));
-////        }
-//
-//        List<Tripla> ab = new ArrayList<Tripla>(a);
-//        ab.addAll(b);
-//        Tripla[] ordenada = radixSort(ab,s);
-//
-//        //System.out.println(s.charAt(ordenada[2].getStart())+s.charAt(ordenada[2].getStart()+1)+ s.charAt(ordenada[2].getStart()+2));
-//        //System.out.println(s.charAt(ordenada[1].getStart())+s.charAt(ordenada[1].getStart()+1));
-//        //System.out.println(s.charAt(ordenada[0].getStart()));
-//
-//        long totalLength = a.size()+b.size();
-//
-
-        //for
 
     }
 
@@ -85,15 +43,6 @@ public class SuffixArray {
             b.add(new Tripla(i+1,i+1,false));
             c.add(new Tripla(i+2,i+2,false));
         }
-
-//        if (i == s.length() - 1)
-//            a.add(new Tripla(i,i,true,""+s.charAt(i)));
-//        else if (i == s.length() - 2) {
-//            a.add(new Tripla(i,i,true,(String)s.subSequence(i,i+3)));
-//            b.add(new Tripla(i+1,i+1,false,""));
-//        }
-
-
         /*Ordenamos lexicograficamente los arreglos con Radix Sort*/
         a = radixSort(a,s);
         b = radixSort(b,s);
@@ -314,33 +263,54 @@ public class SuffixArray {
      }
 
 
+    /**
+     * Esta funcion encuentra las posiciones en el texto donde se puede encontrar el  patron, haciendo busqueda binaria
+     * en el suffixArray y en cada busqueda binaria comparando el patron con el sufijo, caracter a caracter.
+     * @param pattern
+     * @return Lista de enteros que representan las posiciones donde se puede encontrar el patron.
+     */
+     public List<Integer> findPattern(String pattern) {
+         List<Integer> resp = new ArrayList<Integer>();
+         char[] patternArray = pattern.toCharArray();
 
-     public boolean findPattern(String pattern) {
-//         if (this.array == null)
-//             return false;
-//        char[] charArray = pattern.toCharArray();
-//        int pos = 0;
-//        int n = pattern.length()/2;
-//        int x = n+pos;
-//        for (int i = 0; i<pattern.length();i++) {
-//            if (charArray[i] == this.s.charAt(this.array[n+pos]))
-//                break;
-//            else if (charArray[i] < this.s.charAt(this.array[n+pos]))
-//                n = n
-//        }
-         int j=0,L=1,R=this.array.length;
-         int M = R;
-         while (L/R !=1) {
-             M = (L+R)/2; //+ ((L+R)%2 == 0 ? 0 : 1);
-             int compare = pattern.compareTo(s.substring(this.array[M]));
+         int l = 0, r=this.array.length-1;
+         while (r>l) {
+             int m = (l+r)/2 + ((l+r)%2 ==0 ? 0:1);
+             String element = s.substring(this.array[m]);
+             char[] arrayElement = element.toCharArray();
+             boolean flag = true;
+
+             if (patternArray.length > arrayElement.length) {
+                 flag = false;
+             }
+
+             else {
+                 for (int i = 0; i < patternArray.length; i++) {
+                     if (patternArray[i] != arrayElement[i]) {
+                         flag = false;
+                         break;
+                     }
+
+                 }
+             }
+             if (flag) {
+                 resp.add(this.array[m]);
+                 //Aca falta algo
+                 
+             }
+
+             int compare = pattern.compareTo(element);
              if (compare > 0)
-                 L = M;
-             else if (compare < 0)
-                 R = M;
+                 l = m;
+             else if (compare <0)
+                 r = m;
              else
-                 return true;
+                 break;
+
 
          }
-         return false;
+         return resp;
+
+
      }
 }

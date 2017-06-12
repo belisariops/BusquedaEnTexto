@@ -42,7 +42,7 @@ public class Main {
         for (Integer i: list) {
             System.out.println(i);
         }
-        StringBuilder s = new StringBuilder("bananananananananana");
+        StringBuilder s = new StringBuilder("bananananana");
         SuffixArray array = new SuffixArray(s);
         System.out.println(array.findPattern("ana"));
 
