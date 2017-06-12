@@ -80,16 +80,40 @@
 	Los pasos para realizarlos estan detallados en el enunciado de la tarea (archivos adjuntos) y el \textit{paper} de Juha Karkkaneinen y Peter Sanders, creadores del algoritmo para la construcción del suffix array en tiempo lieal.
 
 	\subsection{Hipótesis}
+	
+	Se espera que la implementacion en Java no afecte de manera notoria el tiempo de ejecución de los algoritmos.
+	
+	Para la construccion del suffix array se espera que ocupe un tiempo lineal para su construcción, y que la constante que lo acompaña la cual se espera que sea el tamaño del alfabeto (debido a la sub-rutina de radix sort) no afecte de manera considerable los tiempos de ejecucuion del algoritmo, para la busqueda del patrón en el suffix array se espera obtener el $O(m\log n)$ mostrado en el enunciado de la tarea.\\
+	
+	En el caso del automata se espera que la construcción del automata tome tiempo del orden del tamaño del patrón, no afectando de manera notoria la constante que lo acompaña que se espera sea el tamaño del alfabeto. Para ejecutarlo sobre texto se necesitará del orden del tamaño del texto.
+	
+	
 
-	Si bien es un algoritmo lineal, el algoritmo posee una constante que hace que el tiempo pueda crecer de manera rapida. Además, como el algoritmo será escrito en Java como lenguaje,
-	la eficiencia del algoritmo se podría ver reducida, dado que el \textit{garbage collector} usa la CPU para realizar sus funciones. Se espera demostrar que la constante del algoritmo
-	varía con respecto al largo por motivos externos al algoritmo, lo cual se puede demostrar si para números pequeños el algoritmo sí demuestra un comportamiento lineal.
+	
 
 	% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 	\newpage
 	% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 
 	\section{Diseño Teórico}
+	
+	Para los experimentos se pidió hacer mediciones de los tiempos de distintos tamaños de textos, para tomar en cuenta estos tamaños se tomaron una serie de consideraciones.
+  Se tomó en cuenta que luego de pre-procesar un texto, disminuir su tamaño aprox 0.788 del tamaño original.
+  Se tomó como estimación del tamaño que las palabras tienen largo 6.
+  Con esto quedaron los siguientes tamaños:
+  \begin{itemize}
+     \item  250 Kbs $2^15$
+     \item 500 Kbs $2^16$
+     \item 1 Mbs $2^17$
+     \item 2 Mbs $2^18$
+     \item 4 Mbs $2^19$
+     \item 8 Mbs $2^20$
+     \item 16 Mbs $2^21$
+     \item 32 Mbs $2^22$
+     \item 64 Mbs $2^23$
+     \item 128 Mbs $2^24$
+     \item 256 Mbs $2^25$   
+  \end{itemize}
 
 	\subsection{Main}
 

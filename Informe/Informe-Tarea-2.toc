@@ -5,15 +5,15 @@
 \contentsline {section}{\numberline {2}Dise\IeC {\~n}o Te\IeC {\'o}rico}{3}{section.2}
 \contentsline {subsection}{\numberline {2.1}Main}{3}{subsection.2.1}
 \contentsline {subsection}{\numberline {2.2}Ukkonen}{3}{subsection.2.2}
-\contentsline {subsection}{\numberline {2.3}Last}{3}{subsection.2.3}
-\contentsline {subsection}{\numberline {2.4}Node}{3}{subsection.2.4}
-\contentsline {subsection}{\numberline {2.5}InternalNode}{3}{subsection.2.5}
-\contentsline {subsection}{\numberline {2.6}TextPreprocessor}{3}{subsection.2.6}
-\contentsline {subsection}{\numberline {2.7}Logger}{3}{subsection.2.7}
-\contentsline {section}{\numberline {3}Presentaci\IeC {\'o}n de los Resultados}{4}{section.3}
-\contentsline {subsection}{\numberline {3.1}Tiempo de Creaci\IeC {\'o}n del Suffix Tree}{4}{subsection.3.1}
-\contentsline {subsection}{\numberline {3.2}Desempe\IeC {\~n}o de operaci\IeC {\'o}n \textit {Buscar}}{5}{subsection.3.2}
-\contentsline {section}{\numberline {4}An\IeC {\'a}lisis y Conclusiones}{7}{section.4}
-\contentsline {subsection}{\numberline {4.1}Construcci\IeC {\'o}n del Suffix Tree}{7}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}B\IeC {\'u}squeda en el Suffix Tree}{7}{subsection.4.2}
-\contentsline {subsection}{\numberline {4.3}Conclusiones}{7}{subsection.4.3}
+\contentsline {subsection}{\numberline {2.3}Last}{4}{subsection.2.3}
+\contentsline {subsection}{\numberline {2.4}Node}{4}{subsection.2.4}
+\contentsline {subsection}{\numberline {2.5}InternalNode}{4}{subsection.2.5}
+\contentsline {subsection}{\numberline {2.6}TextPreprocessor}{4}{subsection.2.6}
+\contentsline {subsection}{\numberline {2.7}Logger}{4}{subsection.2.7}
+\contentsline {section}{\numberline {3}Presentaci\IeC {\'o}n de los Resultados}{5}{section.3}
+\contentsline {subsection}{\numberline {3.1}Tiempo de Creaci\IeC {\'o}n del Suffix Tree}{5}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Desempe\IeC {\~n}o de operaci\IeC {\'o}n \textit {Buscar}}{6}{subsection.3.2}
+\contentsline {section}{\numberline {4}An\IeC {\'a}lisis y Conclusiones}{8}{section.4}
+\contentsline {subsection}{\numberline {4.1}Construcci\IeC {\'o}n del Suffix Tree}{8}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}B\IeC {\'u}squeda en el Suffix Tree}{8}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Conclusiones}{8}{subsection.4.3}
