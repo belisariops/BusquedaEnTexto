@@ -276,6 +276,8 @@ public class SuffixArray {
          int l = 0, r=this.array.length-1;
          while (r>l) {
              int m = (l+r)/2 + ((l+r)%2 ==0 ? 0:1);
+             if (m== r || l ==m)
+                 break;
              String element = s.substring(this.array[m]);
              char[] arrayElement = element.toCharArray();
              boolean flag = true;
@@ -296,7 +298,7 @@ public class SuffixArray {
              if (flag) {
                  resp.add(this.array[m]);
                  //Aca falta algo
-                 
+
              }
 
              int compare = pattern.compareTo(element);
