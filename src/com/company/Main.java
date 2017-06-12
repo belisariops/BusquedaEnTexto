@@ -1,11 +1,10 @@
 package com.company;
 
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+
 import algorithms.Automata;
 import textUtilities.TextCleaner;
 
-import java.io.BufferedReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,30 +13,72 @@ public class Main {
     public static void main(String[] args) {
 
         String textPath;
-        ArrayList<String> words = new ArrayList<>();
         Automata automata;
         List<Integer> list;
+        BufferedWriter resultExperiment;
+        BufferedWriter resultIntersecion;
 
-        TextCleaner cleaner = new TextCleaner("english.txt");
+        ArrayList<String> listaArchivos = new ArrayList<>();
+        listaArchivos.add("english50MB.txt");
+        listaArchivos.add("english100MB.txt");
+        listaArchivos.add("english200MB.txt");
+        listaArchivos.add("english1024MB.txt");
+        listaArchivos.add("english.txt");
+
+        TextCleaner cleaner;
         try {
-            textPath = cleaner.clean();
+            for(String archivo: listaArchivos) {
+                cleaner = new TextCleaner(archivo);
 
-            for(int i = 0; i<5; i++){
-                words.add(cleaner.getRandom());
-            }
+                textPath = cleaner.clean();
 
-            BufferedReader br;
+                resultExperiment = new BufferedWriter(new FileWriter("Experiment" + textPath));
+                resultIntersecion = new BufferedWriter(new FileWriter("Intersecion" + textPath));
 
-            for(String word : words){
-                br = new BufferedReader(new FileReader(textPath));
-                automata = new Automata(word);
-                list = automata.run(br);
-                System.out.println("Repeticiones: "+automata.getCantRepeticiones());
-                //System.out.println("Posiciones :");
-                for (Integer i: list) {
-                    //System.out.println(i);
+                ArrayList<String> words = cleaner.getNextRandom();
+
+                BufferedReader br;
+
+                StringBuilder builder;
+
+                long fromTime;
+                int j = 0;
+
+                for (String word : words) {
+
+                    builder = new StringBuilder();
+
+                    builder.append(j);
+                    builder.append(",");
+
+                    br = new BufferedReader(new FileReader(textPath));
+
+                    fromTime = System.nanoTime();
+
+                    automata = new Automata(word);
+
+                    builder.append(fromTime - System.nanoTime());
+                    builder.append(",");
+                    fromTime = System.nanoTime();
+
+                    list = automata.run(br);
+
+                    builder.append(fromTime - System.nanoTime());
+                    builder.append(System.lineSeparator());
+
+                    resultExperiment.write(builder.toString());
+
+                    resultIntersecion.write("Repeticiones: " + automata.getCantRepeticiones() + System.lineSeparator());
+                    resultIntersecion.write("Posiciones :"+ System.lineSeparator());
+                    for (int i : list) {
+                        resultIntersecion.write(i+System.lineSeparator());
+                    }
+                    br.close();
                 }
-                br.close();
+
+                resultExperiment.close();
+                resultIntersecion.close();
+
             }
         } catch(IOException e){
             System.out.println("Error E/S: " + e);

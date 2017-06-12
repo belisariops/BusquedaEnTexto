@@ -12,8 +12,6 @@ public class TextCleaner {
     private BufferedReader file;
     private ArrayList<String> randomWord = null;
 
-    private int count = 0;
-
     public TextCleaner(String textname) {
         FileReader aFile;
         try {
@@ -34,16 +32,10 @@ public class TextCleaner {
         BufferedWriter randResult = new BufferedWriter(new FileWriter(randomResult));
         String line;
         String cleanedLine;
-        StringBuilder auxLine;
-        ArrayList<String> randomAux = new ArrayList<>();
         ArrayList<String> wordsAux = new ArrayList<>();
         randomWord = new ArrayList<>();
 
         String[] auxWords;
-
-        int j = 0;
-        count = 0;
-
 
         while((line = this.file.readLine()) != null){
             cleanedLine = line.toLowerCase();
@@ -75,39 +67,18 @@ public class TextCleaner {
 
             for(String word : auxWords){
                 wordsAux.add(word);
+                if(wordsAux.size()>=10){
+                    randomWord.add(this.getRandomWord(wordsAux));
+                    wordsAux = new ArrayList<>();
+                }
             }
-
 
 
             cleanedLine = cleanedLine.replaceAll(" ", "");
 
             result.write(cleanedLine+System.lineSeparator());
-
-            randomAux.add(this.getRandomWord(wordsAux));
-            wordsAux = new ArrayList<>();
-
-            j++;
-            if(j == 10){
-
-                randomWord.add(this.getRandomWord(randomAux));
-                randomAux = new ArrayList<>();
-                j = 0;
-            }
-            if(randomWord.size()>32){
-                auxLine = new StringBuilder();
-                for (String str: randomWord) {
-                    if(!str.equals("")){
-                        auxLine.append(";");
-                        auxLine.append(str);
-                    }
-                }
-                randResult.write(auxLine.toString());
-                count++;
-                randomWord = new ArrayList<>();
-            }
         }
 
-        randomWord.add(this.getRandomWord(randomAux));
 
         randResult.close();
         result.close();
@@ -125,41 +96,7 @@ public class TextCleaner {
         return words.get(whose);
     }
 
-    public String getRandom(){
-        Random rand = new Random();
-        int whose;
-        if(randomWord.size() == 0){
-            whose = rand.nextInt(count);
-        }else{
-            whose = rand.nextInt(count+1);
-        }
-        if(count == 0){
-            if(randomWord.size() == 0){
-                return "";
-            }else{
-                return this.getRandomWord(randomWord);
-            }
-        }else{
-            if(whose == count+1){
-                return this.getRandomWord(randomWord);
-            }else{
-                try {
-                    FileReader auxFile = new FileReader(randomResult);
-                    BufferedReader reader = new BufferedReader(auxFile);
-                    String line;
-                    while ((line = reader.readLine()) != null) {
-                        ArrayList<String> val = new ArrayList<>();
-                        for (String pal : line.split(";")) {
-                            val.add(pal);
-                        }
-                        return this.getRandomWord(val);
-                    }
-                }
-                catch(IOException e){
-                    System.out.println("Error E/S: " + e);
-                }
-            }
-        }
-        return "";
+    public ArrayList<String> getNextRandom(){
+        return randomWord;
     }
 }
