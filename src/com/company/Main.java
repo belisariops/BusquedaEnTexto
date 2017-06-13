@@ -25,6 +25,15 @@ public class Main {
         BufferedWriter resultIntersecion;
 
         ArrayList<String> listaArchivos = new ArrayList<>();
+        listaArchivos.add("250kb.txt");
+        listaArchivos.add("500kb.txt");
+        listaArchivos.add("1m.txt");
+        listaArchivos.add("2m.txt");
+        listaArchivos.add("4m.txt");
+        listaArchivos.add("8m.txt");
+        listaArchivos.add("16m.txt");
+        listaArchivos.add("32m.txt");
+        listaArchivos.add("64m.txt");
         listaArchivos.add("128m.txt");
         listaArchivos.add("256m.txt");
 
@@ -80,6 +89,7 @@ public class Main {
                 firstTime = System.nanoTime()-fromTime;
 
                 int j = 0;
+                int lenght;
 
                 // Para cada una de las palabras aleatorias
 
@@ -89,6 +99,9 @@ public class Main {
                     }
 
                     if(!word.equals("")) {
+
+                        // Esta parte se agrego post Experimentos pero hubiera mejorado las mediciones
+                        lenght = word.length();
 
                         builderArray = new StringBuilder();
 
@@ -108,6 +121,8 @@ public class Main {
                         array.findPattern(word);
 
                         builderArray.append(System.nanoTime() - fromTime);
+                        builderArray.append(",");
+                        builderArray.append(lenght);
                         builderArray.append(System.lineSeparator());
 
                         resultExperimentArray.write(builderArray.toString());
@@ -128,6 +143,8 @@ public class Main {
                         list = automata.run(br);
 
                         builder.append(System.nanoTime() - fromTime);
+                        builderArray.append(",");
+                        builderArray.append(lenght);
                         builder.append(System.lineSeparator());
 
                         resultExperiment.write(builder.toString());
